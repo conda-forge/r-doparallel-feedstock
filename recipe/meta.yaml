@@ -1,5 +1,4 @@
-{% set version = "1.0.11" %}
-
+{% set version = '1.0.11' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,24 +9,25 @@ package:
 source:
   fn: doParallel_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/doParallel_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/doParallel/doParallel_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/doParallel_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/doParallel/doParallel_{{ version }}.tar.gz
   sha256: 4ccbd2eb46d3e4f5251b0c3de4d93d9168b02bb0be493656d6aea236667ff76a
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-foreach >=1.2.0
     - r-iterators >=1.0.0
-
   run:
     - r-base
     - r-foreach >=1.2.0
@@ -35,7 +35,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('doParallel')"  # [not win]
+    - $R -e "library('doParallel')"           # [not win]
     - "\"%R%\" -e \"library('doParallel')\""  # [win]
 
 about:
@@ -43,8 +43,14 @@ about:
   license: GPL-2
   summary: Provides a parallel backend for the %dopar% function using the parallel package.
   license_family: GPL2
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-2'  # [win]
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
