@@ -1,4 +1,4 @@
-{% set version = '1.0.11' %}
+{% set version = "1.0.14" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,12 +11,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/doParallel_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/doParallel/doParallel_{{ version }}.tar.gz
-  sha256: 4ccbd2eb46d3e4f5251b0c3de4d93d9168b02bb0be493656d6aea236667ff76a
+  sha256: cbbb7f37606d608a9603915ee65587f8ed4bb4a8405ecfaa7f33b8c423d11207
 
 build:
   noarch: generic
   merge_build_host: True  # [win]
-  number: 1001
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
