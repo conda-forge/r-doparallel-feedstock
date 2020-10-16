@@ -1,4 +1,4 @@
-{% set version = '1.0.15' %}
+{% set version = "1.0.16" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/doParallel_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/doParallel/doParallel_{{ version }}.tar.gz
-  sha256: 71ad7ea69616468996aefdd8d02a4a234759a21ddde9ed1657e3c537145cd86e
+  sha256: f1bb26f964f30d47ae4d6cf2b0a2ca0c2122d376424875e82d9abe9e7b054eb2
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -42,7 +42,7 @@ about:
   license: GPL-2.0-only
   summary: Provides a parallel backend for the %dopar% function using the parallel package.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:

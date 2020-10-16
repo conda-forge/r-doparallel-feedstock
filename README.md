@@ -3,13 +3,11 @@ About r-doparallel
 
 Home: https://CRAN.R-project.org/package=doParallel
 
-Package license: GPL-2
+Package license: GPL-2.0-only
 
-Feedstock license: BSD 3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-doparallel-feedstock/blob/master/LICENSE.txt)
 
 Summary: Provides a parallel backend for the %dopar% function using the parallel package.
-
-
 
 Current build status
 ====================
